@@ -1,1 +1,84 @@
 Pointer yaitu variabel yang berisi (menyimpan) alamat memori dari sebuah variabel lain atau pointer dapat diartikan sebagai variabel yang menunjuk ke sebuah alamat memori dari sebuah variabel lain. Pointer ini digunakan dengan maksud untuk menunjukan ke suatu alamat memori sehingga kita dapat mengetahui dengan mudah alamat dari sebuah variabel. Pointer juga bisa diartikan sebagai tipe data yang nilainya mengarah pada nilai yang terdapat pada suatu alamat memori.
+2 Macam Operator Pointer
+Operator Dereference (&)
+Operator Dereference (&) yaitu operator yang berfungsi mendeklarasikan sebuah variabel didalam penggantian memori. operator ini biasa disebut dengan "address of". Jadi seandainya sobat ingin mengetahui dimana variabel akan disimpan (untuk mengetahui letak / alamat penyimpanan variabel di memori), sobat dapat memberikan tanda "&" (ampersand sign) didepan variabel, yang berarti "address of". Karena dengan menggunakan operator dereference (&) ini, sebuah variabel akan menghasilkan alamat lokasi penyimpanannya di memori. Sebagai contoh "int angka" ditempatkan pada memori dengan alamat 0x6ffe34 untuk mengetahuinya sobat dapat menuliskan code seperti ini cout<<"\nAlamat variabel angka (&angka) : "<<&angka; berikut code lengkapnya:
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  
+     //deklarasi variabel angka dengan tipe data int
+     int angka = 90;
+
+     //deklarasi pointer angkax dengan tipe data int
+     int *angkax;
+
+     //angkax sama dengan Address Of angka (0x6ffe34)
+     //sekarang pointer angkax menunjuk ke alamat memori variabel angka
+     //atau pointer angkax berisi (menunjuk) alamat memori variabel angka
+     angkax = &angka;
+
+     cout<<"Nilai (isi) dari variabel angka : "<<angka;
+     cout<<"\nAlamat variabel angka (&angka) : "<<&angka;
+     cout<<"\nNilai yang ditunjuk pointer *angkax : "<<*angkax;
+
+     return 0;
+}
+
+Pada program diatas awalnya kita membuat variabel dengan tipe data int dengan nama "angka", disaat yang bersamaan kita juga melakukan inisialisasi "int angka" dengan nilai awal "90", kemudian kita melakukan deklarasi sebuah pointer dengan tipe data int dan dengan nama "angkax", Setelah itu kita menuliskan code "angkax = &angka;" yang artinya memerintahkan pointer angkax menunjuk ke alamat memori variabel angka, sehingga nilai yang ditunjuk pointer angkax sama dengan nilai dari variabel angka (90) karena pointer angkax telah menunjuk ke alamat memori variabel angka (lihat kembali code diatas).
+
+Operator Reference (*)
+Seandainya pada operator Dereference (&) sobat dapat mengeluarkan alamat memory dari sebuah variabel, sedangkan pada Operator Reference (*) sobat dapat mengeluarkan (menampilkan) nilai dari alamat memori yang di tunjuk. untuk penggunaan nya sendiri sobat dapat menambahkan identifier asterisk (*) didepan variabel. biasanya Operator reference disebut dengan "value pointed by"
+
+Dari contoh program diatas, nilai *angkax adalah "90", hal tersebut karena pointer angkax menjunjuk ke variabel angka sehingga apabila kita menuliskan code cout<<"\nNilai yang ditunjuk pointer *angkax : "<<*angkax; maka akan keluar angka 90 karena kita mengeluarkan nilai dari alamat memori yang ditunjuk oleh pointer angkax (nilai / value yang berada di alamat memori 0x6ffe34).
+
+untuk lebih memahami materi Pointer pada C++ ini, khususnya dalam penggunaan Operator Dereference (&) dan Operator Reference (*), kita akan membahas satu lagi contoh program pointer lengkap dengan penjelasannya.
+
+Contoh Program Pointer pada C++, Lengkap Pembahasan
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+     //deklarasi variabel x dengan tipe data int
+     int x;
+
+     //deklarasi pointer p dengan tipe data int
+     int *p;
+
+     x = 20;
+     p = &x;
+
+     cout<<"\t\t===== Program Contoh Pointer =====\n\n";
+
+     cout<<"Nilai X   \t\t: "<<x<<endl;
+     cout<<"Alamat X (&X) \t\t: "<<&x<<endl<<endl;
+
+     cout<<"Nilai yang ditunjuk *P\t: "<<*p<<endl;
+     cout<<"Alamat yang ditunjuk *P\t: "<<p<<endl;
+     cout<<"Alamat *P (&P) \t\t: "<<&p<<endl;
+
+     // mengisi nilai 30 kedalam *p / alaman yang ditunjuk pointer p
+     // untuk megisikan nilai melalui alamat pointer gunakan *
+     // karena alamat memori yang ditunjuk pointer p merupakan alamat memori variabel x
+     // maka nilai dari variabel x juga ikut berubah
+     *p = 30;
+
+     cout<<"\n\n\nNilai X   \t\t: "<<x<<endl;
+     cout<<"Alamat X (&X) \t\t: "<<&x<<endl<<endl;
+
+     cout<<"Nilai yang ditunjuk *P\t: "<<*p<<endl;
+     cout<<"Alamat yang ditunjuk *P\t: "<<p<<endl;
+     cout<<"Alamat *P (&P) \t\t: "<<&p<<endl;
+
+     return 0;
+}
+
+Pada program diatas awalnya kita membuat variabel dengan tipe data int dengan nama "x", kemudian sebuah pointer dengan tipe data int dengan nama "p". setelah itu memberikan nilai x dengan nilai "20" kemudian mengarahkan / mengisi / menunjukkan pointer p ke alamat memori variabel x. setelah itu menampilkan data dari variabel x dan pointer p,
+
+Kemudian code *p = 30; memiliki arti bahwa kita akan mengisi nilai 30 kedalam pointer p / alaman yang ditunjuk pointer p, karena alamat memori yang ditunjuk ponter p merupakan alamat memori variabel x maka nilai dari variabel x juga ikut berubah, Untuk membuktikan nilai variabel x juga ikut berubah (menjadi 30) maka pada code dibawah nya kita akan menampilkan data dari variabel x dan pointer p. Bagaimana sudah paham kan ?
+
+
+Sekian Artikel mengenai Pointer pada C++, Lengkap Contoh Program dan Pembahasan, semoga artikel ini dapat bermanfaat bagi sobat baik untuk menambah ilmu, mengerjakan tugas, maupun untuk sekedar menambah wawasan tentang Pointer pada C++ dan Macam Operator Pointer baik Operator Dereference (&) maupun Operator Reference (*), apabila sobat menemui kesulitan dalam memahami artikel ini silakan tuliskan komentar di kolom komentar atau hubungi kami melalui halaman Kontak Kami. Akhir kata, Terimakasih atas kunjungannya.
